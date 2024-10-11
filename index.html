@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo!</title>
+</head>
+<body>
+    <h1>Refresh test</h1>
+
+    <script>
+        const socket = new WebSocket('ws://localhost:3000'); // Connect to WebSocket
+
+        socket.addEventListener('message', (event) => {
+            if(event.data == "refresh") {
+                window.location.reload(true); // Force reload just in case some weird caching shit happens
+            }
+        });
+
+        socket.addEventListener('error', (event) => {
+            console.error('Error:', event);
+        });
+    </script>
+</body>
+</html>
